@@ -1,6 +1,6 @@
 package team;
 
-class FootballTeam {
+class FootballTeam implements Comparable<FootballTeam> {
     private int gamesWon;
 
     FootballTeam(int i) {
@@ -11,5 +11,9 @@ class FootballTeam {
 
     int getGamesWon() {
         return gamesWon;
+    }
+
+    public int compareTo(FootballTeam other) {
+        return this.gamesWon - other.gamesWon;
     }
 }
