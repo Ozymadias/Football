@@ -20,4 +20,16 @@ public class FootballTeamTest {
         assertEquals(team.getGamesWon(), nbOfGamesWon,
                 nbOfGamesWon + " games were passed to constructor, but " + team.getGamesWon() + " were returned");
     }
+
+    @DataProvider
+    private static final Object[][] illegalNbOfGames() {
+        return new Object[][]{
+                {-10}, {-1}
+        };
+    }
+
+    @Test(dataProvider = "illegalNbOfGames", expectedExceptions = IllegalArgumentException.class)
+    public void shouldThrowExceptionForIllegalGamesNb(int illegalNbOfGames) {
+        new FootballTeam(illegalNbOfGames);
+    }
 }
