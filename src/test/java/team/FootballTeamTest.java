@@ -53,4 +53,25 @@ public class FootballTeamTest {
         assertTrue(teamWithGreaterNb.compareTo(teamWithSmallerNb) > 0,
                 "team with " + greaterNb + " should be ranked before the team with " + smallerNb + " games won");
     }
+
+    @Test
+    public void teamsWithLessMatchesWonShouldBeLesser() {
+        int smallerNb = 2;
+        FootballTeam teamWithSmallerNb = new FootballTeam(smallerNb);
+        int greaterNb = 3;
+        FootballTeam teamWithGreaterNb = new FootballTeam(greaterNb);
+
+        assertTrue(teamWithSmallerNb.compareTo(teamWithGreaterNb) < 0,
+                "team with " + smallerNb + " should be ranked after the team with " + greaterNb + " games won");
+    }
+
+    @Test
+    public void teamsWithSameNumberOfMatchesWonShouldBeEqual() {
+        int nb = 2;
+        FootballTeam teamA = new FootballTeam(nb);
+        FootballTeam teamB = new FootballTeam(nb);
+
+        assertTrue(teamA.compareTo(teamB) == 0,
+                "both teams have won the same number of games and should be ranked equal");
+    }
 }
